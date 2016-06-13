@@ -7,4 +7,7 @@ fi
 avr-gcc -g -mmcu=atmega168 -o main.elf main.o
 avr-objcopy -j .text -j .data -O ihex main.elf main.hex
 avrdude -p m168 -c usbasp -U flash:w:main.hex
-rm main.elf main.hex main.o
+rm main.hex main.o
+
+avr-size --mcu=atmega168 --format=avr main.elf
+rm main.elf
